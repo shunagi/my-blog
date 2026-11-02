@@ -41,7 +41,15 @@ export async function listAll(
 	return contents;
 }
 
+// microCMS のコンテンツIDは英数字・ハイフン・アンダースコアのみ
+const CONTENT_ID_PATTERN = /^[A-Za-z0-9_-]+$/;
+
 export async function findBy(contentId: string, queries?: MicroCMSQueries): Promise<Blog> {
+	// /.env や /wp-login.php などのスキャンで API を呼ばない（microCMS は不正なIDに 400 を返す）
+	if (!CONTENT_ID_PATTERN.test(contentId)) {
+		error(404, 'ブログが見つかりませんでした。');
+	}
+
 	try {
 		return await microcmsClient.getListDetail<Blog>({
 			endpoint: BLOGS_ENDPOINT,
