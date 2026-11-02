@@ -23,6 +23,24 @@ export async function listBy(tagId?: string, queries?: MicroCMSQueries): Promise
 	}
 }
 
+const MAX_LIMIT = 100;
+
+export async function listAll(
+	queries?: Omit<MicroCMSQueries, 'limit' | 'offset'>
+): Promise<Blog[]> {
+	const contents: Blog[] = [];
+	let totalCount = Infinity;
+
+	while (contents.length < totalCount) {
+		const page = await listBy(undefined, { ...queries, limit: MAX_LIMIT, offset: contents.length });
+		contents.push(...page.contents);
+		totalCount = page.totalCount;
+		if (page.contents.length === 0) break;
+	}
+
+	return contents;
+}
+
 export async function findBy(contentId: string, queries?: MicroCMSQueries): Promise<Blog> {
 	try {
 		return await microcmsClient.getListDetail<Blog>({
