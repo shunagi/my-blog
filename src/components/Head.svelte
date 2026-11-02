@@ -18,5 +18,5 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={ogImage} />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@siiiiisar" />
+	<meta name="twitter:site" content="@sh_unagi" />
 </svelte:head>
