@@ -1,3 +1,3 @@
-**[siiiiisar.blog](https://www.siiiiisar.blog/)**
+**[shunagi.dev](https://shunagi.dev/)**
 
 my personal website
