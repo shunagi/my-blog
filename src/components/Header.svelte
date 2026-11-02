@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import GradientText from './GradientText.svelte';
+	import Logo from './Logo.svelte';
 </script>
 
 <header class="z-40">
-	<div class="absolute m-5 h-12 w-12 select-none outline-none xl:fixed">
-		<a href={resolve('/')}>
-			<span class="text-3xl font-bold">
-				<GradientText text="siiiiisar" />
-			</span>
+	<div class="absolute m-5 select-none outline-none xl:fixed">
+		<a href={resolve('/')} aria-label="shunagi.dev トップへ">
+			<Logo />
 		</a>
 	</div>
 	<nav class="nav">

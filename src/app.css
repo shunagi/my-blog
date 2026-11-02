@@ -7,6 +7,11 @@
 		--max-width: 65ch;
 		--width: min(var(--prose-max-width), 100%);
 		--margin: calc(calc(100vw - var(--prose-width)) / 2);
+
+		/* ブランドカラー (shunagi-logo-handoff.md)。ダークモード対応時は ink を #F3F4F6、accent を #4FB3BF に切り替える */
+		--c-ink: #12161c; /* 見出し・ロゴの背景 */
+		--c-accent: #1f6f78; /* ブログのアクセント色 (Teal) */
+		--logo-amber: #c9732a; /* ロゴのシュナギくん（タレ色） */
 	}
 
 	body {
