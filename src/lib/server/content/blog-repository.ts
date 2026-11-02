@@ -48,7 +48,15 @@ export async function findBy(contentId: string, queries?: MicroCMSQueries): Prom
 			contentId,
 			queries
 		});
-	} catch {
+	} catch (e) {
+		if (isNotFound(e)) {
+			error(404, 'ブログが見つかりませんでした。');
+		}
 		error(500, 'ブログを取得できませんでした。');
 	}
+}
+
+// microCMS SDK はステータスコードをエラーメッセージ（"response status: 404"）にのみ含める
+function isNotFound(e: unknown): boolean {
+	return e instanceof Error && /response status: 404\b/.test(e.message);
 }
