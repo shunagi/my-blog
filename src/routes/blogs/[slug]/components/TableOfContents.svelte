@@ -32,3 +32,10 @@
 		<nav class="toc"></nav>
 	</details>
 </div>
+
+<style>
+	/* tocbot 既定の緑 (#54bc4b) を、ブログのアクセント色に置き換える */
+	.toc :global(.is-active-link::before) {
+		background-color: var(--c-accent);
+	}
+</style>
