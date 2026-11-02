@@ -6,9 +6,12 @@ import { listAll } from '$lib/server/content/blog-repository';
 export const prerender = true;
 
 export const GET: RequestHandler = async () => {
-	const blogs = await listAll({ fields: 'id,revisedAt,meta.tags' });
+	// fields に meta.tags を指定すると参照先が空オブジェクトで返るため meta ごと取得する
+	const blogs = await listAll({ fields: 'id,revisedAt,meta' });
 
-	const tagIds = new Set(blogs.flatMap((blog) => blog.meta?.tags?.map((tag) => tag.id) ?? []));
+	const tagIds = new Set(
+		blogs.flatMap((blog) => blog.meta?.tags?.map((tag) => tag.id) ?? []).filter(Boolean)
+	);
 
 	const latest = blogs
 		.map((blog) => blog.revisedAt)
