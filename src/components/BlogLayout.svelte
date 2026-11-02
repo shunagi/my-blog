@@ -18,9 +18,9 @@
 	<div class="slide-enter flex" style="--enter-stage: 2;">
 		{#if blog.meta?.tags?.length}
 			<div class="mb-2 flex flex-wrap">
-				{#each blog.meta.tags as tag}
+				{#each blog.meta.tags as tag (tag.id)}
 					<div class="mb-2 mr-2">
-						<Tag href={`/tags/${tag.id}`}>{tag.name}</Tag>
+						<Tag tagId={tag.id}>{tag.name}</Tag>
 					</div>
 				{/each}
 			</div>

@@ -1,8 +1,10 @@
 <script lang="ts">
-	export let href: string;
+	import { resolve } from '$app/paths';
+
+	export let tagId: string;
 </script>
 
-<a {href} class="tag-link" target="_blank">
+<a href={resolve('/tags/[slug]', { slug: tagId })} class="tag-link" target="_blank">
 	<slot />
 </a>
 

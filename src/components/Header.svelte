@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
+	import { resolve } from '$app/paths';
 	import GradientText from './GradientText.svelte';
 </script>
 
 <header class="z-40">
 	<div class="absolute m-5 h-12 w-12 select-none outline-none xl:fixed">
-		<a href="/">
+		<a href={resolve('/')}>
 			<span class="text-3xl font-bold">
 				<GradientText text="siiiiisar" />
 			</span>
@@ -13,7 +14,7 @@
 	<nav class="nav">
 		<div class="spacer"></div>
 		<div class="right">
-			<a href="/blogs"> Blog </a>
+			<a href={resolve('/blogs')}> Blog </a>
 		</div>
 	</nav>
 </header>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { Blog } from '$lib/content/blog';
 	import dayjs from 'dayjs';
 	import 'dayjs/locale/ja';
@@ -8,12 +9,10 @@
 
 	dayjs.locale('ja');
 	dayjs.extend(relativeTime);
-
-	const url = '/blogs/' + content.id;
 </script>
 
 <div>
-	<a class="item block" href={url}>
+	<a class="item block" href={resolve('/blogs/[slug]', { slug: content.id })}>
 		<li class="flex flex-col gap-2">
 			<span class="text-lg">
 				{content.title}
