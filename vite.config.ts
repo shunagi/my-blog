@@ -22,9 +22,10 @@ const SANITIZE_HTML_DEPS = [
 	'source-map-js'
 ];
 
-export default defineConfig({
+// dev サーバーで noExternal にすると CJS がそのまま評価され require is not defined になるため、ビルド時のみ適用する
+export default defineConfig(({ command }) => ({
 	plugins: [sveltekit()],
 	ssr: {
-		noExternal: SANITIZE_HTML_DEPS
+		noExternal: command === 'build' ? SANITIZE_HTML_DEPS : []
 	}
-});
+}));
